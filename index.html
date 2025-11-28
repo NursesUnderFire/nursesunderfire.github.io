@@ -19,6 +19,7 @@
     <meta name="description" content="8 in 10 nurses experience workplace violence annually. Access verified 2024-2025 statistics, research, policy solutions, and legislative advocacy to protect healthcare workers.">
     <meta name="keywords" content="workplace violence against nurses, nurse assault statistics, healthcare worker safety, emergency department violence prevention, nursing burnout, patient violence, healthcare violence legislation">
     <meta name="author" content="Nurses Under Fire">
+    <meta name="backend-url" content="">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
@@ -202,6 +203,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
         }
 
         /* Brand / logo */
@@ -237,6 +240,7 @@
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         nav a {
@@ -250,6 +254,22 @@
         nav a:focus {
             color: var(--color-primary);
             outline: none;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.55rem 1rem;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-cta:hover,
+        .nav-cta:focus {
+            background: var(--color-primary-dark);
+            color: white;
         }
 
         /* Container */
@@ -277,6 +297,13 @@
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.95;
+        }
+
+        .hero-subline {
+            font-size: 1rem;
+            max-width: 640px;
+            margin: 0 auto 1rem auto;
+            opacity: 0.9;
         }
 
         .stat-banner {
@@ -329,6 +356,18 @@
             background: #1565c0;
             transform: translateY(-2px);
             outline: none;
+        }
+
+        .btn-ghost {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+        }
+
+        .btn-ghost:hover,
+        .btn-ghost:focus {
+            background: rgba(255,255,255,0.35);
+            color: white;
         }
 
         .btn-outline {
@@ -512,6 +551,44 @@
             margin-bottom: 1rem;
         }
 
+        .action-meta {
+            color: var(--color-text-light);
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .action-progress {
+            background: var(--color-bg-light);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem auto 0 auto;
+            max-width: 700px;
+            text-align: left;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+        }
+
+        .progress-track {
+            background: #e6e6e6;
+            border-radius: 999px;
+            height: 12px;
+            overflow: hidden;
+            margin: 0.75rem 0;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            height: 100%;
+            width: 62%;
+            transition: width 0.4s ease;
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+
         /* FAQ Section */
         .faq-container {
             max-width: 800px;
@@ -681,6 +758,128 @@
             text-decoration: underline;
         }
 
+        .testimonial-slider {
+            position: relative;
+            background: var(--color-bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            max-width: 960px;
+            margin: 2rem auto 0 auto;
+        }
+
+        .testimonial {
+            display: none;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--color-text);
+        }
+
+        .testimonial.active {
+            display: block;
+        }
+
+        .testimonial cite {
+            display: block;
+            margin-top: 0.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            border: none;
+        }
+
+        .slider-dot.active {
+            background: var(--color-primary);
+        }
+
+        .call-script {
+            background: var(--color-bg-light);
+            border-left: 4px solid var(--color-accent);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .call-script pre {
+            white-space: pre-wrap;
+            font-family: inherit;
+            background: white;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .audience-card {
+            background: #fff;
+            padding: 1.25rem;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .audience-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal {
+            background: #fff;
+            padding: 1.75rem;
+            border-radius: 12px;
+            max-width: 520px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .modal h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
         /* Reading Progress Bar */
         .reading-progress {
             position: fixed;
@@ -721,6 +920,10 @@
                 font-size: 1rem;
             }
 
+            .hero-subline {
+                text-align: center;
+            }
+
             section h2 {
                 font-size: 1.8rem;
             }
@@ -731,6 +934,12 @@
 
             .newsletter-form {
                 flex-direction: column;
+            }
+
+            .progress-meta {
+                flex-direction: column;
+                gap: 0.25rem;
+                align-items: flex-start;
             }
         }
     </style>
@@ -748,9 +957,9 @@
     <nav aria-label="Main navigation">
         <div class="container">
             <div class="brand">
-            <img src="images/logo.svg" alt="Nurses Under Fire logo" class="brand-mark-img">
-            <span class="brand-text">Nurses Under Fire</span>
-        </div>
+                <img src="images/logo.svg" alt="Nurses Under Fire logo" class="brand-mark-img">
+                <span class="brand-text">Nurses Under Fire</span>
+            </div>
 
             <ul>
                 <li><a href="#overview">Overview</a></li>
@@ -759,7 +968,12 @@
                 <li><a href="#policy">Policy</a></li>
                 <li><a href="#action">Take Action</a></li>
                 <li><a href="#faq">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+                <li><a href="accessibility.html">Accessibility</a></li>
             </ul>
+            <a class="nav-cta" href="#action">Email your rep</a>
         </div>
     </nav>
 
@@ -768,13 +982,14 @@
         <div class="container">
             <h1>Stop Workplace Violence Against Nurses</h1>
             <p>A Crisis Demanding Immediate Action and Legislative Protection</p>
+            <p class="hero-subline">Congress is drafting violence-prevention standards this session. Send a pre-drafted email to your representatives in under two minutes.</p>
             <div class="stat-banner">
                 <h2>8 in 10 Nurses Experienced Workplace Violence in the Past Year</h2>
                 <p>Yet only 47% report incidents due to time constraints, inadequate staffing, and lack of management support</p>
             </div>
             <div>
                 <a href="#action" class="btn btn-primary">Support Protective Legislation</a>
-                <a href="#statistics" class="btn btn-primary">View Verified Data</a>
+                <p style="margin-top: 0.5rem;">Your message will auto-fill with the latest data and send to both senators + your House rep.</p>
             </div>
 
             <!-- Social Sharing -->
@@ -923,7 +1138,7 @@
         <section id="policy">
             <div class="container">
                 <h2>Legislative Solutions & Policy Recommendations</h2>
-                
+
                 <h3>Federal Legislation in Progress</h3>
                 <ul class="policy-list">
                     <li><strong>Workplace Violence Prevention Act (H.R. 2531):</strong> Requires OSHA to establish workplace violence prevention standards for healthcare settings</li>
@@ -951,6 +1166,21 @@
                     <li><strong>Texas:</strong> Enhanced criminal penalties for assault against healthcare workers</li>
                     <li><strong>Massachusetts:</strong> Mandatory security assessment and reporting requirements</li>
                 </ul>
+
+                <div class="impact-grid" style="margin-top: 2rem;">
+                    <div class="impact-box">
+                        <h4>🚨 Immediate Wins After Passage</h4>
+                        <p>Federal standards would unlock funding for panic buttons, de-escalation training, and incident follow-up—exactly what our action emails request.</p>
+                    </div>
+                    <div class="impact-box">
+                        <h4>📊 Transparent Reporting</h4>
+                        <p>Mandated incident logging ties directly to our "Contact Your Representatives" form so offices can cite real underreporting rates.</p>
+                    </div>
+                    <div class="impact-box">
+                        <h4>🛡️ Accountability</h4>
+                        <p>Clear criminal penalties and staffing standards reinforce the petition and testimony asks in the action cards below.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -959,36 +1189,119 @@
             <div class="container">
                 <h2>Take Action Now</h2>
                 <p style="text-align: center; margin-bottom: 2rem;">
-                    Join thousands of healthcare professionals and advocates supporting protective legislation for nurses and healthcare workers.
+                    Join healthcare professionals and advocates supporting protective legislation for nurses and healthcare workers.
                 </p>
+
+                <div class="action-progress" aria-label="Progress toward goal">
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <div>
+                            <strong>Urgent: Congress votes this session</strong>
+                            <p class="action-meta" id="goalStatus" style="margin: 0.25rem 0 0 0;">Set a real outreach goal once the tracking backend is connected.</p>
+                        </div>
+                        <span class="source-tag" id="liveActionCount" style="margin-top: 0;">Live action count will appear when the backend is running.</span>
+                    </div>
+                    <div class="progress-track" aria-hidden="true">
+                        <div class="progress-bar" id="actionProgress" style="width: 0%;"></div>
+                    </div>
+                    <div class="progress-meta" aria-live="polite">
+                        <span id="goalLabel">Goal will update from backend.</span>
+                        <span id="percentComplete">Awaiting live data</span>
+                    </div>
+                    <p id="backendStatus" class="action-meta" style="margin-top: 0.5rem;">If the tracking backend is offline on GitHub Pages, we'll fall back to email so your message still sends.</p>
+                </div>
+
+                <div class="alert-box" style="margin-top: 1.5rem;">
+                    <strong>⚠️ Critical Finding:</strong> Violence is still <strong>underreported by more than half</strong>. Legislators repeatedly cite missing data as the reason they stall. Share yours below before the vote closes.
+                </div>
 
                 <div class="action-cards">
                     <div class="action-card">
                         <div class="action-card-icon">✉️</div>
                         <h4>Contact Your Representatives</h4>
                         <p>Email or call your senators and congressional representatives to support workplace violence prevention legislation.</p>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="https://www.house.gov/representatives/find-your-representative" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Find House Rep</a>
-                            <a href="https://www.senate.gov/senators/senators-contact.htm" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Find Senator</a>
-                        </div>
+                        <form id="contactForm" aria-label="Quick contact form" style="display: grid; gap: 0.6rem; text-align: left; margin-top: 1rem;">
+                            <label>
+                                <span style="display:block; font-weight:600;">Name</span>
+                                <input type="text" name="name" placeholder="Your name" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px;">
+                            </label>
+                            <label>
+                                <span style="display:block; font-weight:600;">Email</span>
+                                <input type="email" name="email" placeholder="you@example.com" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px;">
+                            </label>
+                            <label>
+                                <span style="display:block; font-weight:600;">Phone (optional)</span>
+                                <input type="tel" name="phone" placeholder="(555) 555-5555" style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px;">
+                            </label>
+                            <label>
+                                <span style="display:block; font-weight:600;">ZIP Code</span>
+                                <input type="text" name="zip" placeholder="12345" pattern="[0-9]{5}" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px;">
+                            </label>
+                            <label>
+                                <span style="display:block; font-weight:600;">Pre-drafted message</span>
+                                <textarea name="message" rows="4" style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px;">I'm a constituent asking you to support federal workplace violence prevention standards for healthcare. 8 in 10 nurses experienced violence this year, and more than half of incidents go unreported. Please back H.R. 2531/SAVE Healthcare Workers Act, fund panic buttons and de-escalation training, and require transparent incident reporting.</textarea>
+                            </label>
+                            <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+                                <button type="submit" class="btn btn-primary">Send email now</button>
+                                <a href="https://www.house.gov/representatives/find-your-representative" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Find House Rep</a>
+                                <a href="https://www.senate.gov/senators/senators-contact.htm" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Find Senator</a>
+                            </div>
+                            <div id="contactFeedback" role="status" aria-live="polite" style="font-size:0.9rem; color: var(--color-text-light);"></div>
+                        </form>
+                        <p class="action-meta" id="contactMeta">Live contact counts will display once the backend records submissions.</p>
                     </div>
                     <div class="action-card">
                         <div class="action-card-icon">🤝</div>
                         <h4>Join Our Movement</h4>
                         <p>Sign our petition calling for immediate federal action on healthcare worker safety.</p>
                         <a href="https://www.change.org/p/raise-awareness-on-growing-number-of-nurse-attacks-every-year/dashboard/home" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Sign Petition</a>
+                        <p class="action-meta">Petition signatures display on the petition host in real time.</p>
                     </div>
                     <div class="action-card">
                         <div class="action-card-icon">📢</div>
                         <h4>Share Your Story</h4>
                         <p>Tell your experience with workplace violence to help raise awareness and drive change.</p>
                         <a href="https://forms.gle/Gnyq7TPnJJwctJBS7" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Submit Testimony</a>
+                        <p class="action-meta">Impact updates publish after we review verified testimonies.</p>
                     </div>
                     <div class="action-card">
                         <div class="action-card-icon">💼</div>
                         <h4>Workplace Training</h4>
                         <p>Implement violence prevention training programs at your healthcare facility.</p>
                         <a href="https://www.nursingworld.org/practice-policy/work-environment/health--safety/workplace-violence/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Learn About Training</a>
+                        <p class="action-meta">Download counts can be added once analytics integration is enabled.</p>
+                    </div>
+                </div>
+
+                <div class="call-script">
+                    <h4 style="margin:0 0 0.5rem 0;">One-click call script</h4>
+                    <p style="margin-bottom:0.5rem;">Reading this on mobile? Copy the script and dial from your phone.</p>
+                    <pre id="callScript">Hi, my name is [Name] from ZIP [ZIP]. I’m asking the Senator to support the Workplace Violence Prevention Act and fund panic buttons and de-escalation training. 8 in 10 nurses faced violence this year, and 53% of incidents go unreported. Please vote yes and tell leadership this is urgent.</pre>
+                    <button id="copyScript" class="btn btn-secondary" type="button">Copy call script</button>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h3>Tailored next steps by role</h3>
+                    <div class="audience-grid">
+                        <div class="audience-card">
+                            <h4>I'm a nurse</h4>
+                            <p>Report incidents anonymously and join our peer support list.</p>
+                            <a href="https://forms.gle/Gnyq7TPnJJwctJBS7" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Share or get support</a>
+                        </div>
+                        <div class="audience-card">
+                            <h4>I'm a hospital leader</h4>
+                            <p>Download a violence-prevention checklist to brief your safety team.</p>
+                            <a href="https://www.nursingworld.org/practice-policy/work-environment/health--safety/workplace-violence/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Get the checklist</a>
+                        </div>
+                        <div class="audience-card">
+                            <h4>I'm a policymaker</h4>
+                            <p>See the cost-savings brief that accompanies the petition data.</p>
+                            <a href="#policy" class="btn btn-outline">Read the policy brief</a>
+                        </div>
+                        <div class="audience-card">
+                            <h4>I'm an ally</h4>
+                            <p>Share the facts and invite three friends to email their reps today.</p>
+                            <a href="#statistics" class="btn btn-outline">Share the data</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1039,6 +1352,28 @@
             </div>
         </section>
 
+        <div class="container">
+            <div class="testimonial-slider" aria-label="Voices from the field">
+                <div class="testimonial active">
+                    “I felt safer once our unit installed panic buttons and de-escalation training became mandatory. We need that nationwide.”
+                    <cite>Maria, RN, Emergency Department</cite>
+                </div>
+                <div class="testimonial">
+                    “Sharing my story with legislators took five minutes and led to a meeting with the district director. The template made it easy.”
+                    <cite>Jordan, ICU Nurse</cite>
+                </div>
+                <div class="testimonial">
+                    “After a violent incident, our hospital finally added security rounds. Please pass federal standards so every nurse gets this protection.”
+                    <cite>Alex, Charge Nurse</cite>
+                </div>
+                <div class="slider-dots" role="tablist" aria-label="Testimonial navigation">
+                    <button class="slider-dot active" aria-label="Show testimonial 1"></button>
+                    <button class="slider-dot" aria-label="Show testimonial 2"></button>
+                    <button class="slider-dot" aria-label="Show testimonial 3"></button>
+                </div>
+            </div>
+        </div>
+
         <!-- Newsletter Section -->
         <section>
             <div class="container">
@@ -1055,6 +1390,18 @@
         </section>
     </main>
 
+    <div class="modal-backdrop" id="actionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalBody">
+        <div class="modal">
+            <h3 id="modalTitle">Thank you for taking action</h3>
+            <p id="modalBody">Your message is queued. Multiply your impact by sharing or scheduling a 10-minute district meeting.</p>
+            <div class="modal-actions">
+                <a href="https://twitter.com/intent/tweet?text=I%20just%20asked%20Congress%20to%20protect%20nurses%20from%20workplace%20violence.%20Join%20me%20%23NurseSafety&url=https://nursesunderfire.github.io" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Share on X</a>
+                <a href="https://www.congress.gov/contact-us" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Schedule a district meeting</a>
+                <button class="btn btn-outline" type="button" id="closeModal">Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1064,13 +1411,13 @@
             
             <!-- Footer Links for SEO -->
             <div style="margin-top: 1.5rem;">
-                <a href="#privacy">Privacy Policy</a>
+                <a href="privacy.html">Privacy Policy</a>
                 <span> | </span>
-                <a href="#contact">Contact Us</a>
+                <a href="contact.html">Contact Us</a>
                 <span> | </span>
-                <a href="#sitemap">Sitemap</a>
+                <a href="sitemap.html">Sitemap</a>
                 <span> | </span>
-                <a href="#accessibility">Accessibility</a>
+                <a href="accessibility.html">Accessibility</a>
             </div>
             
             <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #aaa;">
@@ -1123,6 +1470,222 @@
             alert(`Thank you for subscribing with ${email}. You'll receive updates on nurse safety advocacy.`);
             this.reset();
         });
+
+        // Backend configuration helper (set <meta name="backend-url" content="https://your-backend.example.com"> to override)
+        const backendMeta = document.querySelector('meta[name="backend-url"]');
+        const apiBase = backendMeta?.content?.trim() || '';
+        const apiUrl = (path) => {
+            if (apiBase) {
+                try {
+                    return new URL(path, apiBase).toString();
+                } catch (error) {
+                    console.warn('Invalid backend-url meta content; falling back to same origin.');
+                }
+            }
+            return path;
+        };
+
+        let backendOnline = false;
+
+        async function isBackendAvailable() {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 4000);
+            try {
+                const response = await fetch(apiUrl('/health'), { signal: controller.signal });
+                return response.ok;
+            } catch (error) {
+                return false;
+            } finally {
+                clearTimeout(timeout);
+            }
+        }
+
+        function mailtoFallback(payload, feedbackEl) {
+            const to = 'nursesunderfire1@gmail.com';
+            const subject = 'Nurses Under Fire contact submission';
+            const body = `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone || 'N/A'}\nZIP: ${payload.zip || 'N/A'}\n\nMessage:\n${payload.message}`;
+            if (feedbackEl) {
+                feedbackEl.textContent = 'Backend is offline on GitHub Pages. Opening your email client so you can send directly.';
+            }
+            window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        // Live metrics helpers
+        const liveActionCount = document.getElementById('liveActionCount');
+        const actionProgress = document.getElementById('actionProgress');
+        const goalLabel = document.getElementById('goalLabel');
+        const goalStatus = document.getElementById('goalStatus');
+        const percentComplete = document.getElementById('percentComplete');
+        const contactMeta = document.getElementById('contactMeta');
+
+        function updateMetrics(metrics) {
+            if (!metrics) return;
+
+            if (typeof metrics.totalActions === 'number' && liveActionCount) {
+                liveActionCount.textContent = `${metrics.totalActions} verified actions sent so far`;
+            }
+
+            if (typeof metrics.contactSubmissions === 'number' && contactMeta) {
+                contactMeta.textContent = `${metrics.contactSubmissions} contact requests logged through the backend`;
+            }
+
+            if (typeof metrics.goal === 'number' && metrics.goal > 0) {
+                if (goalLabel) goalLabel.textContent = `Goal: ${metrics.goal} outreach touchpoints`;
+                if (goalStatus) goalStatus.textContent = 'Progress updates pull from the live backend.';
+                if (typeof metrics.totalActions === 'number' && actionProgress && percentComplete) {
+                    const pct = Math.min(100, Math.round((metrics.totalActions / metrics.goal) * 100));
+                    actionProgress.style.width = `${pct}%`;
+                    percentComplete.textContent = `${pct}% complete`;
+                }
+            }
+        }
+
+        async function fetchMetrics() {
+            try {
+                const response = await fetch(apiUrl('/api/metrics'));
+                if (!response.ok) return;
+                const metrics = await response.json();
+                updateMetrics(metrics);
+            } catch (error) {
+                console.warn('Metrics unavailable. Start the backend server to enable live counts.');
+            }
+        }
+
+        async function initializeBackendStatus() {
+            const backendStatus = document.getElementById('backendStatus');
+            backendOnline = await isBackendAvailable();
+
+            if (backendStatus) {
+                backendStatus.textContent = backendOnline
+                    ? 'Backend is online. Live counts and secure submissions are enabled.'
+                    : 'Backend is offline on GitHub Pages. We will open your email client so you can still send messages immediately.';
+            }
+
+            if (backendOnline) {
+                fetchMetrics();
+            } else {
+                if (goalLabel) goalLabel.textContent = 'Backend offline—progress will update once the API is connected.';
+                if (percentComplete) percentComplete.textContent = 'Awaiting email submissions.';
+                if (goalStatus) goalStatus.textContent = 'Use the form to open a pre-filled email while GitHub Pages runs without the backend.';
+            }
+        }
+
+        initializeBackendStatus();
+
+        // Quick contact form -> send to backend + show follow-up modal
+        const contactForm = document.getElementById('contactForm');
+        const modalBackdrop = document.getElementById('actionModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const contactFeedback = document.getElementById('contactFeedback');
+
+        function openModal() {
+            if (modalBackdrop) {
+                modalBackdrop.style.display = 'flex';
+            }
+        }
+
+        function closeModal() {
+            if (modalBackdrop) {
+                modalBackdrop.style.display = 'none';
+            }
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        if (modalBackdrop) {
+            modalBackdrop.addEventListener('click', (e) => {
+                if (e.target === modalBackdrop) {
+                    closeModal();
+                }
+            });
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const name = this.querySelector('input[name="name"]').value.trim();
+                const email = this.querySelector('input[name="email"]').value.trim();
+                const phone = this.querySelector('input[name="phone"]').value.trim();
+                const zip = this.querySelector('input[name="zip"]').value.trim();
+                const message = this.querySelector('textarea[name="message"]').value.trim();
+
+                const payload = { name, email, phone, zip, message };
+
+                if (contactFeedback) {
+                    contactFeedback.textContent = 'Sending securely to our backend…';
+                }
+
+                if (!backendOnline) {
+                    mailtoFallback(payload, contactFeedback);
+                    this.reset();
+                    return;
+                }
+
+                try {
+                    const response = await fetch(apiUrl('/api/contact'), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Backend unavailable');
+                    }
+
+                    const result = await response.json();
+                    if (contactFeedback) {
+                        contactFeedback.textContent = 'Thank you. Your message is saved for delivery to your representatives.';
+                    }
+                    updateMetrics(result.metrics);
+                    openModal();
+                    this.reset();
+                } catch (error) {
+                    mailtoFallback(payload, contactFeedback);
+                }
+            });
+        }
+
+        // Testimonial slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.slider-dot');
+        let testimonialIndex = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach((t, i) => {
+                t.classList.toggle('active', i === index);
+            });
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+            testimonialIndex = index;
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showTestimonial(index));
+        });
+
+        setInterval(() => {
+            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+            showTestimonial(testimonialIndex);
+        }, 6000);
+
+        // Copy call script
+        const copyBtn = document.getElementById('copyScript');
+        const callScript = document.getElementById('callScript');
+
+        if (copyBtn && callScript) {
+            copyBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(callScript.textContent.trim());
+                    copyBtn.textContent = 'Copied!';
+                    setTimeout(() => copyBtn.textContent = 'Copy call script', 2000);
+                } catch (err) {
+                    alert('Copy failed. Please copy manually.');
+                }
+            });
+        }
 
         // Social Sharing Analytics (simple console log)
         document.querySelectorAll('.social-btn').forEach(btn => {

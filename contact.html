@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Nurses Under Fire</title>
+    <meta name="backend-url" content="">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f8f9fb; color: #1f2933; }
+        header { background: #1f2933; color: white; padding: 1.5rem; }
+        header a { color: #f06292; text-decoration: none; font-weight: 700; }
+        main { max-width: 920px; margin: 0 auto; padding: 2rem 1.25rem 3rem 1.25rem; }
+        h1 { margin-bottom: 0.5rem; }
+        p { line-height: 1.6; }
+        .card { background: white; padding: 1.25rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-top: 1rem; }
+        label { display: block; margin-top: 1rem; font-weight: 600; }
+        input, textarea { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #d0d7de; margin-top: 0.35rem; font-size: 1rem; }
+        button { margin-top: 1rem; background: #d32f2f; color: white; border: none; padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; cursor: pointer; }
+        button:hover { background: #b71c1c; }
+        .meta { font-size: 0.95rem; color: #4b5563; margin-top: 0.5rem; }
+        footer { background: #1f2933; color: white; text-align: center; padding: 1.5rem 1rem; margin-top: 2rem; }
+        footer a { color: #f06292; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display:flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <div><a href="index.html">Nurses Under Fire</a> / Contact</div>
+            <div style="display:flex; gap:1rem;">
+                <a href="privacy.html">Privacy</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="accessibility.html">Accessibility</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1>Contact Us</h1>
+        <p>If you want to share a story, request help, or coordinate advocacy, use the secure form below. Submissions are stored on the backend service and can be forwarded to your representatives when you ask us to.</p>
+        <p id="contactBackendStatus" class="meta">We'll check whether the backend is live. If GitHub Pages is running without it, we'll open your email client so your message still sends.</p>
+
+        <div class="card">
+            <h2>Send a message</h2>
+            <form id="contactPageForm">
+                <label>Name
+                    <input type="text" name="name" required placeholder="Your name">
+                </label>
+                <label>Email
+                    <input type="email" name="email" required placeholder="you@example.com">
+                </label>
+                <label>Phone (optional)
+                    <input type="tel" name="phone" placeholder="(555) 555-5555">
+                </label>
+                <label>ZIP Code
+                    <input type="text" name="zip" pattern="[0-9]{5}" required placeholder="12345">
+                </label>
+                <label>Message
+                    <textarea name="message" rows="5" required placeholder="How can we help or what should we share with lawmakers?"></textarea>
+                </label>
+                <button type="submit">Send securely</button>
+                <div id="contactPageFeedback" class="meta" role="status" aria-live="polite"></div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Prefer email?</h2>
+            <p>You can always reach us directly at <a href="mailto:nursesunderfire1@gmail.com">nursesunderfire1@gmail.com</a>. Include your ZIP code if you want us to route your message to the correct representatives.</p>
+        </div>
+
+        <div class="card">
+            <h2>Backend checklist</h2>
+            <ul>
+                <li>Install dependencies: <code>npm install</code>.</li>
+                <li>Set SMTP credentials: <code>SMTP_HOST</code>, <code>SMTP_PORT</code>, <code>SMTP_USER</code>, <code>SMTP_PASS</code>, <code>NOTIFY_TO</code>.</li>
+                <li>When hosting static pages separately, set <code>&lt;meta name="backend-url" content="https://your-backend.example.com"&gt;</code> to point the forms to your API.</li>
+                <li>(Optional) Set an outreach goal: <code>ACTION_GOAL=5000</code> before starting the server.</li>
+                <li>Start the server locally with <code>npm start</code> or deploy <code>server.js</code> to your hosting provider.</li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Nurses Under Fire. <a href="accessibility.html">Accessibility</a> | <a href="privacy.html">Privacy</a></p>
+    </footer>
+
+    <script>
+        const backendMeta = document.querySelector('meta[name="backend-url"]');
+        const apiBase = backendMeta?.content?.trim() || '';
+        const apiUrl = (path) => {
+            if (apiBase) {
+                try {
+                    return new URL(path, apiBase).toString();
+                } catch (error) {
+                    console.warn('Invalid backend-url meta content; falling back to same origin.');
+                }
+            }
+            return path;
+        };
+
+        let backendOnline = false;
+
+        async function isBackendAvailable() {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 4000);
+            try {
+                const response = await fetch(apiUrl('/health'), { signal: controller.signal });
+                return response.ok;
+            } catch (error) {
+                return false;
+            } finally {
+                clearTimeout(timeout);
+            }
+        }
+
+        function mailtoFallback(payload, feedbackEl) {
+            const to = 'nursesunderfire1@gmail.com';
+            const subject = 'Nurses Under Fire contact submission';
+            const body = `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone || 'N/A'}\nZIP: ${payload.zip || 'N/A'}\n\nMessage:\n${payload.message}`;
+            if (feedbackEl) {
+                feedbackEl.textContent = 'Backend is offline on GitHub Pages. Opening your email client so you can send directly.';
+            }
+            window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        const contactForm = document.getElementById('contactPageForm');
+        const contactFeedback = document.getElementById('contactPageFeedback');
+        const backendStatus = document.getElementById('contactBackendStatus');
+
+        async function initializeBackendStatus() {
+            backendOnline = await isBackendAvailable();
+            if (backendStatus) {
+                backendStatus.textContent = backendOnline
+                    ? 'Backend is online. Messages will be stored securely and can trigger notifications.'
+                    : 'Backend is offline on GitHub Pages. Use the form to open a pre-filled email that you can send now.';
+            }
+        }
+
+        initializeBackendStatus();
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const payload = {
+                    name: contactForm.querySelector('input[name="name"]').value.trim(),
+                    email: contactForm.querySelector('input[name="email"]').value.trim(),
+                    phone: contactForm.querySelector('input[name="phone"]').value.trim(),
+                    zip: contactForm.querySelector('input[name="zip"]').value.trim(),
+                    message: contactForm.querySelector('textarea[name="message"]').value.trim()
+                };
+
+                if (!backendOnline) {
+                    mailtoFallback(payload, contactFeedback);
+                    contactForm.reset();
+                    return;
+                }
+
+                if (contactFeedback) {
+                    contactFeedback.textContent = 'Sending to the backend…';
+                }
+
+                try {
+                    const response = await fetch(apiUrl('/api/contact'), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Request failed');
+                    }
+
+                    contactFeedback.textContent = 'Thank you. Your message is saved and we will follow up.';
+                    contactForm.reset();
+                } catch (error) {
+                    mailtoFallback(payload, contactFeedback);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
