@@ -130,6 +130,13 @@
     <link rel="dns-prefetch" href="//cdn.example.com">
     
     <style>
+        .brand-mark-img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: inline-block;
+         }
+
         :root {
             --color-primary: #d32f2f;
             --color-primary-dark: #b71c1c;
@@ -741,11 +748,10 @@
     <nav aria-label="Main navigation">
         <div class="container">
             <div class="brand">
-                <div class="brand-mark" aria-hidden="true">
-                    <span class="brand-icon">🩺</span>
-                </div>
-                <span class="brand-text">Nurses Under Fire</span>
-            </div>
+            <img src="images/logo.svg" alt="Nurses Under Fire logo" class="brand-mark-img">
+            <span class="brand-text">Nurses Under Fire</span>
+        </div>
+
             <ul>
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#statistics">Statistics</a></li>
