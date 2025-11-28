@@ -1,7 +1,0 @@
-node_modules
-npm-debug.log*
-.yarn*
-.DS_Store
-.env
-.env.*
-data/submissions.json
