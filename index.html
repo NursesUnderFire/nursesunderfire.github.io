@@ -25,16 +25,17 @@
     <meta property="og:url" content="https://nursesunderfire.github.io">
     <meta property="og:title" content="Stop Workplace Violence Against Nurses - Statistics & Prevention">
     <meta property="og:description" content="8 in 10 nurses experience workplace violence. Verified statistics, research, and policy solutions.">
-    <meta property="og:image" content="https://nursesunderfire.github.io/">
+    <!-- TODO: replace with a real image file when you have one -->
+    <meta property="og:image" content="https://nursesunderfire.github.io/images/twitter-image-1024x512.jpg">
     <meta property="og:image:alt" content="Nurses Under Fire - Workplace Violence Prevention Advocacy">
     <meta property="og:site_name" content="Nurses Under Fire">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.nursingworld.org/practice-policy/work-environment/wpv/">
+    <meta name="twitter:url" content="https://nursesunderfire.github.io/">
     <meta name="twitter:title" content="Stop Workplace Violence Against Nurses">
     <meta name="twitter:description" content="8 in 10 nurses experience workplace violence. Verified statistics & solutions.">
-    <meta name="twitter:image" content="https://nursesunderfire.org/images/twitter-image-1024x512.jpg">
+    <meta name="twitter:image" content="https://nursesunderfire.github.io/images/twitter-image-1024x512.jpg">
     <meta name="twitter:creator" content="@NursesUnderFire">
     
     <!-- Structured Data - Organization -->
@@ -45,7 +46,7 @@
       "name": "Nurses Under Fire",
       "alternateName": "Advocacy for Workplace Safety in Healthcare",
       "url": "https://nursesunderfire.github.io/",
-      "logo": "https://nursesunderfire.github.io/",
+      "logo": "https://nursesunderfire.github.io/images/twitter-image-1024x512.jpg",
       "description": "Advocacy initiative providing verified statistics, research, and policy solutions to address workplace violence against nurses",
       "sameAs": [
         "https://twitter.com/NursesUnderFire",
@@ -74,7 +75,7 @@
         "name": "Nurses Under Fire",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://nursesunderfire.github.io/"
+          "url": "https://nursesunderfire.github.io/images/twitter-image-1024x512.jpg"
         }
       },
       "mainEntity": {
@@ -87,7 +88,7 @@
         },
         "datePublished": "2025-01-01",
         "dateModified": "2025-11-28",
-        "image": "https://nursesunderfire.github.io/"
+        "image": "https://nursesunderfire.github.io/images/twitter-image-1024x512.jpg"
       },
       "speakable": {
         "@type": "SpeakableSpecification",
@@ -96,7 +97,7 @@
     }
     </script>
     
-    <!-- Structured Data - Breadcrumb (Dynamic - updated via JS) -->
+    <!-- Structured Data - Breadcrumb -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -106,26 +107,26 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "nursesunderfire.github.io"
+          "item": "https://nursesunderfire.github.io/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Statistics",
-          "item": "https://nursesunderfire.org/#statistics"
+          "item": "https://nursesunderfire.github.io/#statistics"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Policy",
-          "item": "https://nursesunderfire.org/#policy"
+          "item": "https://nursesunderfire.github.io/#policy"
         }
       ]
     }
     </script>
     
-    <!-- Preload Critical Resources -->
-    <link rel="preload" as="style" href="styles.css">
+    <!-- Preload Critical Resources (optional external stylesheet if you add one later) -->
+    <!-- <link rel="preload" as="style" href="styles.css"> -->
     <link rel="dns-prefetch" href="//cdn.example.com">
     
     <style>
@@ -196,9 +197,32 @@
             align-items: center;
         }
 
-        nav h1 {
-            font-size: 1.5rem;
-            color: var(--color-primary);
+        /* Brand / logo */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.2);
+        }
+
+        .brand-icon {
+            font-size: 1.2rem;
+        }
+
+        .brand-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
         }
 
         nav ul {
@@ -670,9 +694,16 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+
             nav ul {
                 gap: 1rem;
                 font-size: 0.9rem;
+                flex-wrap: wrap;
             }
 
             .hero h1 {
@@ -709,7 +740,12 @@
     <!-- Navigation -->
     <nav aria-label="Main navigation">
         <div class="container">
-            <h1>🚨 Nurses Under Fire</h1>
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true">
+                    <span class="brand-icon">🩺</span>
+                </div>
+                <span class="brand-text">Nurses Under Fire</span>
+            </div>
             <ul>
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#statistics">Statistics</a></li>
@@ -737,15 +773,15 @@
 
             <!-- Social Sharing -->
             <div class="social-sharing" aria-label="Share this page">
-                <a href="https://twitter.com/intent/tweet?text=8%20in%2010%20nurses%20experience%20workplace%20violence.%20Get%20verified%20statistics%20and%20support%20protective%20legislation%20%23EndNurseAbuse%20%23NurseSafety&url=https://nursesunderfire.org" 
+                <a href="https://twitter.com/intent/tweet?text=8%20in%2010%20nurses%20experience%20workplace%20violence.%20Get%20verified%20statistics%20and%20support%20protective%20legislation%20%23EndNurseAbuse%20%23NurseSafety&url=https://nursesunderfire.github.io" 
                    class="social-btn twitter" target="_blank" rel="noopener noreferrer">
                     Share on Twitter
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://nursesunderfire.org" 
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://nursesunderfire.github.io" 
                    class="social-btn facebook" target="_blank" rel="noopener noreferrer">
                     Share on Facebook
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://nursesunderfire.org" 
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://nursesunderfire.github.io" 
                    class="social-btn linkedin" target="_blank" rel="noopener noreferrer">
                     Share on LinkedIn
                 </a>
@@ -756,7 +792,7 @@
     <!-- Breadcrumb Navigation -->
     <div class="container">
         <nav aria-label="Breadcrumb" class="breadcrumb">
-            <a href="https://nursesunderfire.org">Home</a> 
+            <a href="https://nursesunderfire.github.io/">Home</a> 
             <span> / </span>
             <span>Workplace Violence Prevention</span>
         </nav>
@@ -789,7 +825,7 @@
                 </p>
 
                 <h3>Impact on Healthcare Delivery</h3>
-                <div class="impact-grid">
+                <div class="impact-grid" id="impact">
                     <div class="impact-box">
                         <h4>🏥 Patient Safety</h4>
                         <p>Violence-related stress impairs clinical decision-making and increases medical errors, directly affecting patient outcomes.</p>
@@ -1082,9 +1118,9 @@
             this.reset();
         });
 
-        // Social Sharing Analytics
+        // Social Sharing Analytics (simple console log)
         document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function() {
                 const platform = this.classList[1];
                 console.log('Social share tracked:', platform);
             });
