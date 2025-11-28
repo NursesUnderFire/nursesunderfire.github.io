@@ -40,7 +40,7 @@
 
         <div class="card">
             <h2>Send a message</h2>
-            <form id="contactPageForm">
+            <form id="contactPageForm" action="mailto:nursesunderfire1@gmail.com" method="post" enctype="text/plain">
                 <label>Name
                     <input type="text" name="name" required placeholder="Your name">
                 </label>
@@ -147,6 +147,9 @@
                 };
 
                 if (!backendOnline) {
+                    if (contactFeedback) {
+                        contactFeedback.textContent = 'Backend is offline on GitHub Pages. Opening your email client so you can send now.';
+                    }
                     mailtoFallback(payload, contactFeedback);
                     contactForm.reset();
                     return;

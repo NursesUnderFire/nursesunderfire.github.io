@@ -1219,7 +1219,7 @@
                         <div class="action-card-icon">✉️</div>
                         <h4>Contact Your Representatives</h4>
                         <p>Email or call your senators and congressional representatives to support workplace violence prevention legislation.</p>
-                        <form id="contactForm" aria-label="Quick contact form" style="display: grid; gap: 0.6rem; text-align: left; margin-top: 1rem;">
+                        <form id="contactForm" aria-label="Quick contact form" action="mailto:nursesunderfire1@gmail.com" method="post" enctype="text/plain" style="display: grid; gap: 0.6rem; text-align: left; margin-top: 1rem;">
                             <label>
                                 <span style="display:block; font-weight:600;">Name</span>
                                 <input type="text" name="name" placeholder="Your name" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px;">
@@ -1613,14 +1613,17 @@
 
                 const payload = { name, email, phone, zip, message };
 
-                if (contactFeedback) {
-                    contactFeedback.textContent = 'Sending securely to our backend…';
-                }
-
                 if (!backendOnline) {
+                    if (contactFeedback) {
+                        contactFeedback.textContent = 'Backend is offline on GitHub Pages. Opening your email client so you can send now.';
+                    }
                     mailtoFallback(payload, contactFeedback);
                     this.reset();
                     return;
+                }
+
+                if (contactFeedback) {
+                    contactFeedback.textContent = 'Sending securely to our backend…';
                 }
 
                 try {
