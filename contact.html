@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Nurses Under Fire</title>
+    <meta name="backend-url" content="">
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f8f9fb; color: #1f2933; }
         header { background: #1f2933; color: white; padding: 1.5rem; }
@@ -28,16 +29,18 @@
             <div style="display:flex; gap:1rem;">
                 <a href="privacy.html">Privacy</a>
                 <a href="sitemap.html">Sitemap</a>
+                <a href="accessibility.html">Accessibility</a>
             </div>
         </div>
     </header>
     <main>
         <h1>Contact Us</h1>
         <p>If you want to share a story, request help, or coordinate advocacy, use the secure form below. Submissions are stored on the backend service and can be forwarded to your representatives when you ask us to.</p>
+        <p id="contactBackendStatus" class="meta">We'll check whether the backend is live. If GitHub Pages is running without it, we'll open your email client so your message still sends.</p>
 
         <div class="card">
             <h2>Send a message</h2>
-            <form id="contactPageForm">
+            <form id="contactPageForm" action="mailto:nursesunderfire1@gmail.com" method="post" enctype="text/plain">
                 <label>Name
                     <input type="text" name="name" required placeholder="Your name">
                 </label>
@@ -68,6 +71,7 @@
             <ul>
                 <li>Install dependencies: <code>npm install</code>.</li>
                 <li>Set SMTP credentials: <code>SMTP_HOST</code>, <code>SMTP_PORT</code>, <code>SMTP_USER</code>, <code>SMTP_PASS</code>, <code>NOTIFY_TO</code>.</li>
+                <li>When hosting static pages separately, set <code>&lt;meta name="backend-url" content="https://your-backend.example.com"&gt;</code> to point the forms to your API.</li>
                 <li>(Optional) Set an outreach goal: <code>ACTION_GOAL=5000</code> before starting the server.</li>
                 <li>Start the server locally with <code>npm start</code> or deploy <code>server.js</code> to your hosting provider.</li>
             </ul>
@@ -78,8 +82,58 @@
     </footer>
 
     <script>
+        const backendMeta = document.querySelector('meta[name="backend-url"]');
+        const apiBase = backendMeta?.content?.trim() || '';
+        const apiUrl = (path) => {
+            if (apiBase) {
+                try {
+                    return new URL(path, apiBase).toString();
+                } catch (error) {
+                    console.warn('Invalid backend-url meta content; falling back to same origin.');
+                }
+            }
+            return path;
+        };
+
+        let backendOnline = false;
+
+        async function isBackendAvailable() {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 4000);
+            try {
+                const response = await fetch(apiUrl('/health'), { signal: controller.signal });
+                return response.ok;
+            } catch (error) {
+                return false;
+            } finally {
+                clearTimeout(timeout);
+            }
+        }
+
+        function mailtoFallback(payload, feedbackEl) {
+            const to = 'nursesunderfire1@gmail.com';
+            const subject = 'Nurses Under Fire contact submission';
+            const body = `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone || 'N/A'}\nZIP: ${payload.zip || 'N/A'}\n\nMessage:\n${payload.message}`;
+            if (feedbackEl) {
+                feedbackEl.textContent = 'Backend is offline on GitHub Pages. Opening your email client so you can send directly.';
+            }
+            window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
         const contactForm = document.getElementById('contactPageForm');
         const contactFeedback = document.getElementById('contactPageFeedback');
+        const backendStatus = document.getElementById('contactBackendStatus');
+
+        async function initializeBackendStatus() {
+            backendOnline = await isBackendAvailable();
+            if (backendStatus) {
+                backendStatus.textContent = backendOnline
+                    ? 'Backend is online. Messages will be stored securely and can trigger notifications.'
+                    : 'Backend is offline on GitHub Pages. Use the form to open a pre-filled email that you can send now.';
+            }
+        }
+
+        initializeBackendStatus();
 
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
@@ -92,12 +146,21 @@
                     message: contactForm.querySelector('textarea[name="message"]').value.trim()
                 };
 
+                if (!backendOnline) {
+                    if (contactFeedback) {
+                        contactFeedback.textContent = 'Backend is offline on GitHub Pages. Opening your email client so you can send now.';
+                    }
+                    mailtoFallback(payload, contactFeedback);
+                    contactForm.reset();
+                    return;
+                }
+
                 if (contactFeedback) {
                     contactFeedback.textContent = 'Sending to the backend…';
                 }
 
                 try {
-                    const response = await fetch('/api/contact', {
+                    const response = await fetch(apiUrl('/api/contact'), {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
@@ -110,7 +173,7 @@
                     contactFeedback.textContent = 'Thank you. Your message is saved and we will follow up.';
                     contactForm.reset();
                 } catch (error) {
-                    contactFeedback.textContent = 'Backend is unavailable. Please email us directly at nursesunderfire1@gmail.com.';
+                    mailtoFallback(payload, contactFeedback);
                 }
             });
         }
