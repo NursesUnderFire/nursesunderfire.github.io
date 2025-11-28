@@ -25,8 +25,14 @@ function ensureDataFile() {
 
 function readSubmissions() {
     ensureDataFile();
-    const content = fs.readFileSync(SUBMISSIONS_PATH, 'utf8');
-    return JSON.parse(content);
+    try {
+        const content = fs.readFileSync(SUBMISSIONS_PATH, 'utf8');
+        return JSON.parse(content);
+    } catch (error) {
+        console.warn('Unable to read submissions file, resetting to empty array.', error.message);
+        writeSubmissions([]);
+        return [];
+    }
 }
 
 function writeSubmissions(entries) {
@@ -71,18 +77,26 @@ app.get('/api/metrics', (_req, res) => {
 });
 
 app.post('/api/contact', async (req, res) => {
-    const { name, email, phone = '', zip = '', message } = req.body || {};
+    const { name = '', email = '', phone = '', zip = '', message = '' } = req.body || {};
 
-    if (!name || !email || !message) {
+    if (!name.trim() || !email.trim() || !message.trim()) {
         return res.status(400).json({ error: 'Name, email, and message are required.' });
     }
 
+    if (zip && !/^\d{5}$/.test(String(zip).trim())) {
+        return res.status(400).json({ error: 'ZIP code must be 5 digits.' });
+    }
+
+    if (message.length > 5000) {
+        return res.status(400).json({ error: 'Message is too long. Please limit to 5,000 characters.' });
+    }
+
     const submission = {
-        name,
-        email,
-        phone,
-        zip,
-        message,
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        zip: String(zip).trim(),
+        message: message.trim(),
         submittedAt: new Date().toISOString()
     };
 
