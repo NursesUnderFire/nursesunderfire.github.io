@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Nurses Under Fire Favicon</title>
+  <desc id="desc">Circular badge with a line-art sheep and the words Nurses Under Fire and Dedicated to your well being.</desc>
+  <defs>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b6c8ff" />
+      <stop offset="100%" stop-color="#8ca7ff" />
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="248" fill="#f7ede3" stroke="url(#ring)" stroke-width="14" />
+  <circle cx="256" cy="256" r="210" fill="none" stroke="#cdbeb0" stroke-width="6" />
+
+  <!-- Text labels -->
+  <text x="256" y="120" text-anchor="middle" font-family="'Times New Roman', Garamond, serif" font-size="42" fill="#6a3c2c" letter-spacing="2">NURSES UNDER FIRE</text>
+  <text x="256" y="402" text-anchor="middle" font-family="'Times New Roman', Garamond, serif" font-size="28" fill="#6a3c2c" letter-spacing="1">DEDICATED TO YOUR WELL BEING</text>
+
+  <!-- Decorative stars -->
+  <path d="M136 256 l10 -22 10 22 22 10 -22 10 -10 22 -10 -22 -22 -10z" fill="#9ea7ff" opacity="0.85" />
+  <path d="M356 256 l10 -22 10 22 22 10 -22 10 -10 22 -10 -22 -22 -10z" fill="#9ea7ff" opacity="0.85" />
+
+  <!-- Simplified sheep line art -->
+  <g transform="translate(112 160)" fill="none" stroke="#6a3c2c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 162c-6-14-7-30 2-42 11-15 34-22 54-18 10-16 32-24 50-19 18 5 32 22 31 40 20 7 33 27 30 46-3 22-25 40-50 42h-99c-30-1-55-23-54-49 0-7 2-13 6-18" />
+    <path d="M210 212c1 22 18 40 38 40 13 0 24-9 26-21 7 10 21 14 32 8 11-6 15-20 9-31" />
+    <path d="M170 216c-3 18-16 32-32 32-15 0-28-12-30-28" />
+    <path d="M214 134c-10-12-10-30 1-40 7-7 19-10 30-8" />
+    <path d="M120 156c-16-8-24-29-17-46 7-16 26-24 42-17 7-14 22-22 37-21" />
+    <circle cx="244" cy="148" r="6" fill="#6a3c2c" stroke="none" />
+  </g>
+</svg>
