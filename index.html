@@ -161,16 +161,16 @@
         }
 
         :root {
-            --color-primary: #d32f2f;
-            --color-primary-dark: #b71c1c;
-            --color-secondary: #1976d2;
+            --color-primary: #c62828;
+            --color-primary-dark: #8e0000;
+            --color-secondary: #0f5db8;
             --color-accent: #f57c00;
-            --color-success: #388e3c;
-            --color-text: #212121;
-            --color-text-light: #666;
-            --color-bg-light: #f5f5f5;
+            --color-success: #1b5e20;
+            --color-text: #141414;
+            --color-text-light: #2d2d2d;
+            --color-bg-light: #f4f7fb;
             --color-bg-white: #ffffff;
-            --color-border: #e0e0e0;
+            --color-border: #d6d6d6;
         }
 
         * {
@@ -260,6 +260,20 @@
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            align-items: center;
+            gap: 0.4rem;
         }
 
         nav a {
@@ -311,7 +325,7 @@
 
         .stat-banner h2 {
             font-size: 2rem;
-            color: #ffeb3b;
+            color: #ffffff;
             margin-bottom: 0.5rem;
         }
 
@@ -367,6 +381,33 @@
             outline: none;
         }
 
+        @media (max-width: 900px) {
+            .nav-toggle {
+                display: inline-flex;
+            }
+
+            nav .container {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-top: 0.5rem;
+            }
+
+            .nav-links.is-open {
+                display: flex;
+            }
+
+            nav a {
+                padding: 0.35rem 0;
+            }
+        }
+
         /* Sections */
         section {
             padding: 3rem 0;
@@ -384,7 +425,7 @@
             font-size: 1.5rem;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--color-text);
+            color: var(--color-text-light);
         }
 
         section h4 {
@@ -530,7 +571,7 @@
             margin-bottom: 1rem;
         }
 
-        .action-card h4 {
+        .action-card h3 {
             color: var(--color-primary);
             margin-bottom: 1rem;
         }
@@ -775,7 +816,12 @@
             <span class="brand-text">Nurses Under Fire</span>
         </div>
 
-            <ul>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">
+                <span class="nav-toggle-arrow" aria-hidden="true">▾</span>
+                Menu
+            </button>
+
+            <ul id="primary-menu" class="nav-links">
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#statistics">Statistics</a></li>
                 <li><a href="#impact">Impact</a></li>
@@ -992,7 +1038,7 @@
                 <div class="action-cards">
                     <div class="action-card">
                         <div class="action-card-icon">✉️</div>
-                        <h4>Contact Your Representatives</h4>
+                        <h3>Contact Your Representatives</h3>
                         <p>Email or call your senators and congressional representatives to support workplace violence prevention legislation.</p>
                         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                             <a href="https://www.house.gov/representatives/find-your-representative" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Find House Rep</a>
@@ -1001,19 +1047,19 @@
                     </div>
                     <div class="action-card">
                         <div class="action-card-icon">🤝</div>
-                        <h4>Join Our Movement</h4>
+                        <h3>Join Our Movement</h3>
                         <p>Sign our petition calling for immediate federal action on healthcare worker safety.</p>
                         <a href="https://www.change.org/p/raise-awareness-on-growing-number-of-nurse-attacks-every-year/dashboard/home" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Sign Petition</a>
                     </div>
                     <div class="action-card">
                         <div class="action-card-icon">📢</div>
-                        <h4>Share Your Story</h4>
+                        <h3>Share Your Story</h3>
                         <p>Tell your experience with workplace violence to help raise awareness and drive change.</p>
                         <a href="https://forms.gle/Gnyq7TPnJJwctJBS7" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Submit Testimony</a>
                     </div>
                     <div class="action-card">
                         <div class="action-card-icon">💼</div>
-                        <h4>Workplace Training</h4>
+                        <h3>Workplace Training</h3>
                         <p>Implement violence prevention training programs at your healthcare facility.</p>
                         <a href="https://www.nursingworld.org/practice-policy/work-environment/health--safety/workplace-violence/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Learn About Training</a>
                     </div>
@@ -1069,8 +1115,9 @@
         <!-- Newsletter Section -->
         <section>
             <div class="container">
+                <h2>Stay Connected &amp; Informed</h2>
                 <div class="newsletter">
-                    <h3>Stay Informed About Nurse Safety</h3>
+                    <h3>Get Reliable Updates About Nurse Safety</h3>
                     <p>Get updates on legislation, research, and advocacy opportunities delivered to your inbox</p>
                     <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter subscription">
                         <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email address">
@@ -1100,7 +1147,7 @@
                 <a href="accessibility.html">Accessibility</a>
             </div>
             
-            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #aaa;">
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #4a4a4a;">
                 This advocacy website is dedicated to raising awareness about workplace violence against nurses 
                 and supporting legislative action to ensure safe working environments for all healthcare professionals.
             </p>
@@ -1158,6 +1205,18 @@
                 console.log('Social share tracked:', platform);
             });
         });
+
+        // Responsive navigation disclosure
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-links');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navMenu.classList.toggle('is-open');
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+                navToggle.querySelector('.nav-toggle-arrow').textContent = isOpen ? '▴' : '▾';
+            });
+        }
     </script>
 </body>
 </html>

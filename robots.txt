@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://nursesunderfire.github.io/sitemap.html
+Host: nursesunderfire.github.io
